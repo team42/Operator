@@ -9,38 +9,32 @@ import java.util.*;
  * This code was originally written by hbe and has been modified to fit the 
  * goal of this project.
  *
- * @author Nicolai, Lasse
+ * @author Lasse
  */
 public class DAO {
    private Connection con;
    private PreparedStatement preparedStatement;
    private ResultSet resultSet;
-   //private PostgresqlConnectionFactory PostgresqlConnectionFactory;
 
    /**
-    * List all rows in table test.
+    * List all rows in table trip_offers.
     * 
+    * @return resultSet containing found values in table
     */
-   public String listTrips() {
+   public ResultSet listTrips() {
       con = null;
       resultSet = null;
 
-      String query = "SELECT * FROM trip_offers";
+      String query = "SELECT * FROM trip_offers ORDER BY id DESC";
 
       try {
          con = PostgresqlConnectionFactory.createConnection();
          preparedStatement = con.prepareStatement(query);
          resultSet = preparedStatement.executeQuery();
-
-         while(resultSet.next()) {
-            return resultSet.getString("destination") + ";" + resultSet.getString("time_ordered");
-         }
-         return "No entries";
-
       } catch(SQLException e) {
          e.printStackTrace();
-         return "Error loading trips from database";
       }
+      return resultSet;
    }
 
    /**
@@ -82,7 +76,7 @@ public class DAO {
    }
 
    /**
-    * List all rows in table test.
+    * Execute SQL statement in query.
     * 
     */
    public ResultSet execSQL(String query) {
