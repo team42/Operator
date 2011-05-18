@@ -43,11 +43,21 @@
 </head>
 <body>
 
+<table border="0">
+<tr>
+<td>
+<%-- Start applet --%>
+<APPLET CODE="DbTest.class" WIDTH=700 HEIGHT=700></APPLET>
+<%-- End applet --%>
+</td>
+<td>
 <%-- Main form to submit new customer coordinates --%>
+<p>
 <FORM METHOD=POST>
-Enter coordinates: <INPUT TYPE=TEXT NAME=destination SIZE=20 VALUE="1234,5678"><BR>
+Enter coordinates: <INPUT TYPE=TEXT NAME=destination SIZE=20 VALUE="1234,5678">
 <INPUT TYPE=SUBMIT>
 </FORM>
+</p>
 <BR>
 <%
 
@@ -81,8 +91,12 @@ Enter coordinates: <INPUT TYPE=TEXT NAME=destination SIZE=20 VALUE="1234,5678"><
 <BR>
 <% 
                 }  
-%>  
- 
+%>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+</td>
+</tr>
+</table> 
 </body>
 </html>
 <%-- End HTML --%>

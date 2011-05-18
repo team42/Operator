@@ -1,7 +1,6 @@
 package beans;
 
 import java.sql.*;
-import java.util.*;
 
 /**
  * This bean handles the SQL strings/commands for the Postgresql database.

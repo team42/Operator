@@ -43,6 +43,11 @@
 </head>
 <body>
 
+<%-- Start applet --%>
+<APPLET CODE="DbTest.class" WIDTH=284 HEIGHT=350>
+</APPLET>
+<%-- End applet --%>
+
 <%-- Main form to submit new customer coordinates --%>
 <FORM METHOD=POST>
 Enter coordinates: <INPUT TYPE=TEXT NAME=destination SIZE=20 VALUE="1234,5678"><BR>
