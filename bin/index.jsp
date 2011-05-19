@@ -47,7 +47,7 @@
 <tr>
 <td>
 <%-- Start applet --%>
-<APPLET CODE="DbTest.class" WIDTH=700 HEIGHT=700></APPLET>
+<APPLET CODE="applet.DrawMap.class" WIDTH=701 HEIGHT=701></APPLET>
 <%-- End applet --%>
 </td>
 <td>
