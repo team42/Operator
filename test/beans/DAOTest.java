@@ -7,42 +7,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DAOTest {
-   DAO instance;
-   
-   @Before
-   public void setUp() throws Exception {
-      instance = new DAO();
-   }
-
-   @After
-   public void tearDown() throws Exception {
-   }
-
-   @Test
-   public void testAddTrip() {
-      boolean expResult = true;
-      boolean result = instance.addTrip("1234,5678");
-      System.out.println("    Result = Expected: " + result + " = " + expResult);
-      assertEquals(expResult, result);
-   }
+   DAO instance = new DAO();
+   private String lastId;
    
    @Test
-   public void testListTrips() {
-      ResultSet expResult = instance.listTrips();
-      ResultSet result = expResult;
-
-      System.out.println("    Result = Expected: " + result + " = " + expResult);
+   public void testDAO() {
+      
+      // Test addTrip()
+      String expResult = instance.addTrip("1234,5678");
+      this.lastId = expResult;
+      String result = expResult;
+      System.out.println("Result = Expected: " + result + " = " + expResult);
       assertEquals(expResult, result);
+      
+      // Test listTrips()
+      ResultSet expResult1 = instance.listTrips();
+      ResultSet result1 = expResult1;
+      System.out.println("Result = Expected: " + result1 + " = " + expResult1);
+      assertEquals(expResult1, result1);
+      
+      // Test deleteTrip()
+      boolean expResult2 = true;
+      boolean result2 = instance.deleteTrip(lastId);
+      System.out.println("Result = Expected: " + result2 + " = " + expResult2);
+      assertEquals(expResult2, result2);
    }
-
-   @Test
-   public void testExecSQL() {
-      fail("Not yet implemented"); // TODO
-   }
-
-   @Test
-   public void testDeleteTrip() {
-      fail("Not yet implemented"); // TODO
-   }
-
 }

@@ -4,6 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import applet.model.*;
 
+/**
+ * Fetches coordinates, from the database, for drawing the map and taxis
+ * 
+ * @author Nicolai, Lasse
+ *
+ */
 public class MapDAO {
 
    Connection con = null;

@@ -53,14 +53,16 @@ public class CoordinateSystem {
     * 
     * @param g Graphics object to draw on
     * @param p Taxi coordinates as Vector
+    * @param taxi_id Id of taxi
     * @param c Color of point
     */
-   public void drawTaxi(Graphics g, Vector p, Color c){
+   public void drawTaxi(Graphics g, Vector p, String taxi_id, Color c){
       Vector px=transform(p);
       Color old = g.getColor();
       g.setColor(c);
       g.fillOval((int)px.x, (int)px.y, 8, 8);
-      g.drawString(p.x + "," + p.y, (int)px.x, (int)px.y);
+      g.setFont(new Font("Verdana", Font.BOLD, 12));
+      g.drawString(taxi_id, (int)px.x, (int)px.y);
       g.setColor(old);
    }
    

@@ -61,7 +61,7 @@ public class TaxiMap {
       
           
       for(int k=0;k<taxis.size();k++) {
-         S2.drawTaxi(g, new Vector((double) taxis.get(k).getXcoord(), (double) taxis.get(k).getYcoord()), Color.RED);
+         S2.drawTaxi(g, new Vector((double) taxis.get(k).getXcoord(), (double) taxis.get(k).getYcoord()), taxis.get(k).getTaxiID(), Color.RED);
       }
 
 //      int start = config.getTaxiPosition();

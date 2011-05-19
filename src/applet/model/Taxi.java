@@ -58,7 +58,6 @@ public class Taxi {
 	 */
 	public int getXcoord() {
 	   int xCoord = Integer.parseInt(taxiCoord.substring(0, 4));
-	   System.out.println(xCoord);
 	   return xCoord;
 	}
 	
@@ -69,7 +68,6 @@ public class Taxi {
 	 */
 	public int getYcoord() {
       int yCoord = Integer.parseInt(taxiCoord.substring(5, 9));
-      System.out.println(yCoord);
       return yCoord;
    }
 	

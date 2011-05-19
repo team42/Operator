@@ -40,13 +40,14 @@ public class DAO {
     * Add a new trip to the database.
     * 
     * @param destination
-    * @return true if success, otherwise false
+    * @return ID of last inserted row
     */
-   public boolean addTrip(String destination) {
-      String cardsQuery = "INSERT INTO trip_offers (destination, time_ordered) VALUES (?, ?)";
+   public String addTrip(String destination) {
+      String cardsQuery = "INSERT INTO trip_offers (destination, time_ordered) VALUES (?, ?) RETURNING id";
 
-      int rowCount = 0;
+      ResultSet resultSet = null;
       con = null;
+      String lastId = "";
 
       try {
          con = PostgresqlConnectionFactory.createConnection();
@@ -57,7 +58,10 @@ public class DAO {
          java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime()); 
          preparedStatement.setTimestamp(2, timestamp);
 
-         rowCount = preparedStatement.executeUpdate();
+         resultSet = preparedStatement.executeQuery();
+         while(resultSet.next()) {
+            lastId = resultSet.getString("id");
+         }
          preparedStatement.close();
 
       } catch (SQLException e) {
@@ -68,10 +72,7 @@ public class DAO {
             catch (SQLException e1) { System.out.println("Failed Closing of Database!"); }
          }
       }
-      // We want to return false if INSERT was unsuccesfull, else return true
-      if (rowCount == 0) { return false; }
-      else { return true; }
-
+      return lastId;
    }
 
    /**
@@ -96,8 +97,9 @@ public class DAO {
 
    /**
     * Delete row from database that matches id.
+    * 
     * @param id Row id to delete
-    * @return true if successfull, else false
+    * @return true if successful, else false
     */
    public boolean deleteTrip(String id) {
       int newid = Integer.parseInt(id);
@@ -120,7 +122,7 @@ public class DAO {
             catch (SQLException e1) { System.out.println("Failed Closing of Database!"); }
          }
       }
-      // We want to return false if INSERT was unsuccesfull, else return true
+      // We want to return false if INSERT was unsuccessful, else return true
       if (rowCount == 0) { return false; }
       else { return true; }
    }

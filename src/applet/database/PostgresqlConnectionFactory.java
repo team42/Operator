@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 /**
  * 
- * Create connection to the local database.
+ * Create connection to the database.
  * 
  * @author Lasse
  *
@@ -23,6 +23,11 @@ public class PostgresqlConnectionFactory {
     * @throws SQLException
     */
    public static Connection createConnection() throws SQLException {
+      try {
+         Class.forName("org.postgresql.Driver");
+      } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+      }
       return DriverManager.getConnection(URL, USERNAME, PASSWORD);
    }
 
