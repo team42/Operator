@@ -1,29 +1,28 @@
 package applet.database;
 
 import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.Before;
+import java.util.ArrayList;
 import org.junit.Test;
+import applet.model.*;
+
 
 public class MapDAOTest {
-
-   @Before
-   public void setUp() throws Exception {
-   }
-
-   @After
-   public void tearDown() throws Exception {
-   }
+   MapDAO instance = new MapDAO();
 
    @Test
    public void testGetMap() {
-      fail("Not yet implemented"); // TODO
+      ArrayList<Intersection> expResult = instance.getMap();
+      ArrayList<Intersection>  result = expResult;
+      System.out.println("Result = Expected: " + result + " = " + expResult);
+      assertEquals(expResult, result);
    }
 
    @Test
    public void testGetTaxis() {
-      fail("Not yet implemented"); // TODO
+      ArrayList<Taxi> expResult = instance.getTaxis();
+      ArrayList<Taxi>  result = expResult;
+      System.out.println("Result = Expected: " + result + " = " + expResult);
+      assertEquals(expResult, result);
    }
 
 }
